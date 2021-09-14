@@ -10,7 +10,7 @@ export class SlideshowPosterComponent implements OnInit {
 
   @Input() peliculas: Pelicula[] = [];
   slideOpts = {
-    slidesPerView: 3.0,
+    slidesPerView: 3.2,
     freeMode: true
   };
 
