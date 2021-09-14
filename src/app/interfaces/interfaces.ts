@@ -33,59 +33,59 @@ export interface Pelicula {
 }
 
 export interface PeliculaDetalle {
-  adult: boolean;
+  adult?: boolean;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  backdrop_path: string;
+  backdrop_path?: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
   belongs_to_collection?: any;
-  budget: number;
-  genres: Genre[];
-  homepage: string;
-  id: number;
+  budget?: number;
+  genres?: Genre[];
+  homepage?: string;
+  id?: number;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  imdb_id: string;
+  imdb_id?: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  original_language: string;
+  original_language?: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  original_title: string;
-  overview: string;
-  popularity: number;
+  original_title?: string;
+  overview?: string;
+  popularity?: number;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  poster_path: string;
+  poster_path?: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  production_companies: Productioncompany[];
+  production_companies?: Productioncompany[];
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  production_countries: Productioncountry[];
+  production_countries?: Productioncountry[];
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  release_date: string;
-  revenue: number;
-  runtime: number;
+  release_date?: string;
+  revenue?: number;
+  runtime?: number;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  spoken_languages: Spokenlanguage[];
-  status: string;
-  tagline: string;
-  title: string;
-  video: boolean;
+  spoken_languages?: Spokenlanguage[];
+  status?: string;
+  tagline?: string;
+  title?: string;
+  video?: boolean;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  vote_average: number;
+  vote_average?: number;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  vote_count: number;
+  vote_count?: number;
 }
 
 //APARITR DE AQUÍ CREO QUE NO SIRVE LO DEJO POR SI ACASO
 
 interface Spokenlanguage {
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  english_name: string;
+  english_name?: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  iso_639_1: string;
-  name: string;
+  iso_639_1?: string;
+  name?: string;
 }
 
 interface Productioncountry {
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  iso_3166_1: string;
-  name: string;
+  iso_3166_1?: string;
+  name?: string;
 }
 
 interface Productioncompany {
