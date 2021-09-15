@@ -9,7 +9,7 @@ import { PeliculaDetalle } from '../interfaces/interfaces';
 export class DataLocalService {
 
   peliculas: PeliculaDetalle[] = [];
-  private _storage: Storage | null = null;
+  private storages: Storage | null = null;
 
   constructor(private storage: Storage, private toastController: ToastController) {
     this.initDB();
@@ -17,8 +17,8 @@ export class DataLocalService {
 
   async initDB() {
     const storage = await this.storage.create();
-    // eslint-disable-next-line no-underscore-dangle
-    this._storage = storage;
+    this.storages = storage;
+    this.cargarFavoritos();
   }
 
   async presentToast(message: string) {
@@ -45,11 +45,23 @@ export class DataLocalService {
     } else {
       this.peliculas.push(pelicula);
       mensaje = 'Agregada a Favoritos';
-
     }
 
     this.presentToast(mensaje);
     this.storage.set('pelicula', this.peliculas);
+    return !existe;
+  }
+
+  async cargarFavoritos() {
+    const peliculas = await this.storage.get('peliculas');
+    this.peliculas = peliculas || [];
+    return this.peliculas;
+  }
+
+  async existePelicula( id) {
+    await this.cargarFavoritos();
+    const existe = this.peliculas.find( peli => peli.id === id);
+    return (existe) ? true: false;
   }
 
 }

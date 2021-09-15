@@ -15,6 +15,7 @@ export class DetalleComponent implements OnInit {
   pelicula: PeliculaDetalle = {};
   oculto = 150;
   actores: Cast[] = [];
+  corazon = 'heart-outline';
 
   slideOptActores = {
     slidesPerView: 3.3,
@@ -25,12 +26,13 @@ export class DetalleComponent implements OnInit {
   constructor(private moviesService: MoviesService, private modalController: ModalController, private datalocal: DataLocalService) { }
 
   ngOnInit() {
+
+    this.datalocal.existePelicula(this.id).then( existe => this.corazon = (existe) ? 'heart': 'heart-outline');
+
     this.moviesService.getPeliculaDetalle(this.id).subscribe( resp => {
-      console.log('Pelicula',resp);
       this.pelicula = resp;
     });
     this.moviesService.getActoresPeliculas(this.id).subscribe( resp => {
-      console.log('Actores',resp);
       this.actores = resp.cast;
     });
   }
@@ -40,7 +42,8 @@ export class DetalleComponent implements OnInit {
   }
 
   favorito(){
-    this.datalocal.guardarPelicula(this.pelicula);
+    const existe = this.datalocal.guardarPelicula(this.pelicula);
+    this.corazon = (existe) ? 'heart': 'heart-outline';
   }
 
 }
